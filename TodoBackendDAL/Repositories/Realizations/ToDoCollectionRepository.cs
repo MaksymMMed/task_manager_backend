@@ -9,15 +9,15 @@ using TodoBackendDAL.Repositories.Interfaces;
 
 namespace TodoBackendDAL.Repositories.Realizations
 {
-    public class ToDoRepository : GenericRepository<ToDo>,IToDoRepository
+    public class ToDoCollectionRepository : GenericRepository<ToDoCollection>,IToDoCollectionRepository
     {
-        public ToDoRepository(ToDoContext context) : base(context)
+        public ToDoCollectionRepository(ToDoContext context) : base(context)
         {
         }
 
-        public async override Task<ToDo> GetById(int id)
+        public async override Task<ToDoCollection> GetById(int id)
         {
-            var item = await Table.Include(x => x.InnerToDoList).Where(x=>x.Id == id).FirstOrDefaultAsync();
+            var item = await Table.Include(x => x.ToDoList).Where(x => x.Id == id).FirstOrDefaultAsync();
             return item;
         }
     }

@@ -8,9 +8,9 @@ namespace TodoBackendDAL.Repositories.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> GetById(int id);
-        Task Insert(TEntity entity);
-        Task Update(TEntity entity);
-        Task Delete(int id);
+        public Task<TEntity> GetById(int id);
+        public Task Insert(TEntity entity);
+        public Task Update(TEntity entity);
+        public Task Delete(int id);
     }
 }
